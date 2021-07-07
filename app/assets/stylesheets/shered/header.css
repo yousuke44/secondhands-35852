@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+.top-page-header {
+  width: 100vw;
+  padding: 2vh 10vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-contents {
+  width: 50%;
+}
+
+.left-list {
+  display: flex;
+  align-items: center;
+}
+
+.secondhands-icon {
+  width: 10vw;
+  margin-right: 2vw;
+}
+
+.btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  margin-right: 2vw;
+}
+.btn-square:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+.btn-square-2 {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn-square-2:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+li {
+  list-style: none;
+}
+
+.right-contents {
+  width: 50%;
+  display: flex;
+}
+
+.right-list {
+  width: 100vw;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.user-nickname {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+  font-weight: bold;
+  text-align: right;
+}
