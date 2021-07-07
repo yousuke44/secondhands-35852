@@ -1,0 +1,48 @@
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# ロゴ拡大表示部分 %>
+  <div class="logo">
+    <div><%= link_to image_tag("secondhands-logo02.png", class: "secondhands-logo"), "/" %></div>
+  </div>
+   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
+  <%# SECONDHANDSの特徴 %>
+  <div class='feature-contents'>
+  <h2 class='title'>
+   SECONDHANDSの特徴
+  </h2>
+  <ul class='feature-lists'>
+    <li class='list'>
+      <%= image_tag "secondhands-intro01.png", class:"list-pict" %>
+      <h3 class='feature-list-tex'>
+        簡単に出品・購入
+      </h3>
+      <p class='feature-list-description'>
+        使い終わった教科書はすぐに出品！
+      </p>
+    </li>
+    <li class='list'>
+      <%= image_tag "secondhands-intro02.png", class:"list-pict" %>
+      <h3 class='feature-list-tex'>
+        すぐに買い手が見つかる
+      </h3>
+      <p class='feature-list-description'>
+        大学内で探すから売買が効率的！
+      </p>
+    </li>
+    <li class='list'>
+      <%= image_tag "secondhands-intro03.png", class:"list-pict" %>
+      <h3 class='feature-list-tex'>
+        他の教科書を購入
+      </h3>
+      <p class='feature-list-description'>
+        他の授業の教科書を購入して出費を削減！
+      </p>
+    </li>
+  </ul>
+</div>
+<%= link_to('#', class: 'purchase-btn') do %>
+  出品する
+<% end %>
+<%= render "shared/footer" %>
