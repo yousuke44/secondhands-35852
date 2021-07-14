@@ -6,3 +6,16 @@ ja:
         birthday: 生年月日
         university_id: 大学名
         department_id: 学部名
+      
+      item:
+        image: 商品画像
+        price: 商品価格
+        name: 商品名
+        lecture: 講義名
+        teacher: 先生名
+        author: 著者名
+        publisher: 出版社名
+        year_period_id: 年度・受講期
+        sales_status_id: 商品の状態
+        scheduled_delivery_id: 発送までの日数
+        user: 会員名

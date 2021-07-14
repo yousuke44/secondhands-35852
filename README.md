@@ -63,8 +63,7 @@
 | --------------------- | ------------- | ------------------- |
 | name                  | string        | null: false         |
 | price                 | integer       | null: false         |
-| year_id               | integer       | null: false         |
-| period_id             | integer       | null: false         |
+| year_period_id        | integer       | null: false         |
 | lecture               | string        | null: false         |
 | teacher               | string        | null: false         |
 | sales_status_id       | integer       | null: false         |
