@@ -7,6 +7,7 @@ class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :university
   belongs_to :department
+  has_many :items
 
   with_options presence: true do
     validates :nickname

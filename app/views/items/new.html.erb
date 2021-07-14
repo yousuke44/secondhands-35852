@@ -1,0 +1,117 @@
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to image_tag('secondhands-logo.png', size: '180x70'), "/" %>
+  </header>
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">商品情報を入力</h2>
+    <%= form_with model: @item, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+      <%# 商品画像 %>
+      <div class="img-upload">
+        <div class="weight-bold-text">
+          商品画像
+          <span class="indispensable">必須</span>
+        </div>
+        <div class="click-upload">
+          <p>
+            クリックしてファイルをアップロード
+          </p>
+          <%= f.file_field :image, id:"image"%>
+        </div>
+      </div>
+      <%# /商品画像 %>
+      <%# 商品名 %>
+      <div class="new-items">
+        <div class="weight-bold-text">
+          商品名
+          <span class="indispensable">必須</span>
+        </div>
+        <%=f.text_area :name, class:"item-text", id:"item-name", placeholder:"商品名を入力" %>
+      </div>
+      <%# /商品名 %>
+      <%# 商品価格 %>
+      <div class="sell-price">
+        <div class="weight-bold-text">
+          商品価格
+          <span class="indispensable">必須</span>
+          <p>※送料は出品者負担になります</p>
+        </div>
+        <div class="price-space">
+          <span class="sell-yen">¥</span>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"半角数字で入力" %>
+        </div>
+      </div>
+      <%# /商品価格 %>
+      <%# 年度・受講期 %>
+      <div class="new-items">
+        <div class="weight-bold-text">
+          年度・受講期
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:year_period_id, YearPeriod.all, :id, :name, {}, {class:"active-select", id:"item-year-period"}) %>
+      </div>
+      <%# /年度・受講期 %>
+      <%# 講義名 %>
+      <div class="new-items">
+        <div class="weight-bold-text">
+          講義名
+          <span class="indispensable">必須</span>
+        </div>
+        <%=f.text_area :lecture, class:"item-text", id:"item-lecture", placeholder:"講義名を入力（全角）" %>
+      </div>
+      <%# /講義名 %>
+      <%# 先生名 %>
+      <div class="new-items">
+        <div class="weight-bold-text">
+          先生名
+          <span class="indispensable">必須</span>
+        </div>
+        <%=f.text_area :teacher, class:"item-text", id:"item-teacher", placeholder:"先生の氏名を入力（全角）" %>
+      </div>
+      <%# /先生名 %>
+      <%# 商品の状態 %>
+      <div class="new-items">
+        <div class="weight-bold-text">
+          商品の状態
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:sales_status_id, SalesStatus.all, :id, :name, {}, {class:"active-select", id:"item-seles-status"}) %>
+      </div>
+      <%# /商品の状態 %>
+      <%# 発送までの日数 %>
+      <div class="new-items">
+        <div class="weight-bold-text">
+          発送までの日数
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:scheduled_delivery_id, ScheduledDelivery.all, :id, :name, {}, {class:"active-select", id:"item-scheduled-delivery"}) %>
+      </div>
+      <%# /発送までの日数 %>
+      <%# 著者名 %>
+      <div class="new-items">
+        <div class="weight-bold-text">
+          著者名
+          <span class="indispensable">必須</span>
+        </div>
+        <%=f.text_area :author, class:"item-text", id:"item-autor", placeholder:"著者名を入力（全角）" %>
+      </div>
+      <%# /著者名 %>
+      <%# 出版社名 %>
+      <div class="new-items">
+        <div class="weight-bold-text">
+          出版社名
+          <span class="indispensable">必須</span>
+        </div>
+        <%=f.text_area :publisher, class:"item-text", id:"item-publisher", placeholder:"出版社名を入力（全角）" %>
+      </div>
+      <%# /出版社名 %>
+      <%# 下部ボタン %>
+      <div class="sell-btn-contents">
+        <%= f.submit "出品する" ,class:"sell-btn" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+      <%# /下部ボタン %>
+    <% end %>
+  </div>
+</div>
+
