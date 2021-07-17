@@ -6,6 +6,78 @@ a {
   background: #f8f8f8;
 }
 
+/* ログイン後の検索 */
+.item-search {
+  width: 100vw;
+  padding: 2vh 10vw;
+  display: flex;
+  background-color: rgb(226, 217, 217);
+}
+/* //ログイン後の検索 */
+
+/* ログイン後の商品一覧 */
+.item-contents {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh 0; 
+}
+
+.item-content>.title {
+  font-size: 5vh;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.item-contents>.item-no-message {
+  font-size: 3vh;
+  margin: 1vh 0;
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+}
+
+.item-lists {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-lists>.list {
+  width: 37vh;
+  padding: 1vw;
+  background-color: #FFF;
+}
+
+.item-img-content {
+  position: relative;
+}
+
+.item-img {
+  width: 33vh;
+  height: 40vh;
+}
+
+.item-info {
+  background-color: #FFF;
+  color: black;
+  padding: 1vw;
+}
+
+.item-name {
+  font-size: 2.5vh;
+}
+
+.item-info-sub {
+  font-size: 2vh;
+  display: flex;
+  justify-content: space-between;
+}
+/* //ログイン後の商品一覧 */
+
+
 .secondhands-logo {
   width: 100vw;
 }
