@@ -1,0 +1,66 @@
+<%= render "shared/second-header" %>
+
+<%# 商品の詳細 %>
+<div class="item-show">
+  <div class="item-box">
+    <div class="item-main-info">
+      <%= image_tag @item.image, class:"item-box-img" %>
+      <div class="item-name-price">
+        <span class="show-indispensable">商品名</span>
+        <div class="item-name">
+          <%= @item.name %>
+        </div>
+        <span class="show-indispensable">販売価格</span>
+        <div class="item-price">
+          <%= @item.price.to_s(:delimited) %>円
+        </div>
+        <% if current_user.id != @item.user_id %>
+        <%= link_to "購入画面に進む", "#", class:"item-orange-btn"%>
+        <% end %>
+      </div>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">年度・受講期</th>
+          <td class="detail-value"><%= @item.year_period.name%></td>
+        </tr>
+        <tr>
+          <th class="detail-item">講義名</th>
+          <td class="detail-value"><%= @item.lecture%></td>
+        </tr>
+        <tr>
+          <th class="detail-item">先生名</th>
+          <td class="detail-value"><%= @item.teacher%></td>
+        </tr>
+        <tr>
+          <th class="detail-item">商品の状態</th>
+          <td class="detail-value"><%= @item.sales_status.name%></td>
+        </tr>
+        <tr>
+          <th class="detail-item">発送までの日数</th>
+          <td class="detail-value"><%= @item.scheduled_delivery.name%></td>
+        </tr>
+        <tr>
+          <th class="detail-item">著者名</th>
+          <td class="detail-value"><%= @item.author%></td>
+        </tr>
+        <tr>
+          <th class="detail-item">出版社名</th>
+          <td class="detail-value"><%= @item.publisher%></td>
+        </tr>
+        <tr>
+          <th class="detail-item">出品者</th>
+          <td class="detail-value"><%= @item.user.nickname%></td>
+        </tr>
+      </tbody>
+    </table>
+    <% if current_user.id == @item.user_id %>
+      <%= link_to "商品の編集", "#", class: "item-red-btn" %>
+      <p class="or-text">or</p>
+      <%= link_to "削除", "#", class:"item-destroy" %>
+    <% end %>
+  </div>
+</div>
+<%# /商品の詳細 %>
+<%= render "shared/second-footer"%>
