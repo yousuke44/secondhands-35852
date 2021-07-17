@@ -1,48 +1,92 @@
 <%= render "shared/header" %>
 
 <div class='main'>
-  <%# ロゴ拡大表示部分 %>
-  <div class="logo">
-    <div><%= link_to image_tag("secondhands-logo02.png", class: "secondhands-logo"), "/" %></div>
-  </div>
-   <%# /ロゴ拡大表示部分  %>
+  <% if user_signed_in? %>
+    <%# 商品検索 %>
+    <div class="item-search">
+      <p>キーワード検索</p>
+    </div>
+    <%# /商品検索 %>
+    <%# 商品一覧表示 %>
+    <div class='item-contents'>
+      <h2 class='title'>出品商品一覧</h2>
+      <ul class='item-lists'>
+        <% if @items[0] != nil %>
+          <% @items.each do |item| %>
+            <li class='list'>
+              <%=link_to items_path(item.id) do %>
+                <div class='item-img-content'>
+                  <%= image_tag item.image, class: "item-img" %>
+                </div>
+                <div class='item-info'>
+                  <h3 class='item-name'>
+                    <%= item.name %>
+                  </h3>
+                  <div class='item-info-sub'>
+                    <span><%= item.price.to_s(:delimited) %>円
+                    <br><%= item.year_period.name %>
+                    <br><%= item.lecture %>
+                    <br><%= item.teacher %></span>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        <% else %>
+          <div class='item-no-message'>
+            現在出品中の商品はありません
+          </div>
+        <% end %>
+      </ul>
+    </div>
+    <%# /商品一覧表示 %>
+  <% else %>
+    <%# ロゴ拡大表示部分 %>
+    <div class="logo">
+      <%= link_to image_tag("secondhands-logo02.png", class: "secondhands-logo"), "/" %>
+    </div>
+    <%# /ロゴ拡大表示部分 %>
 
-  <%# SECONDHANDSの特徴 %>
-  <div class='feature-contents'>
-  <h2 class='title'>
-   SECONDHANDSの特徴
-  </h2>
-  <ul class='feature-lists'>
-    <li class='list'>
-      <%= image_tag "secondhands-intro01.png", class:"list-pict" %>
-      <h3 class='feature-list-tex'>
-        簡単に出品・購入
-      </h3>
-      <p class='feature-list-description'>
-        使い終わった教科書はすぐに出品！
-      </p>
-    </li>
-    <li class='list'>
-      <%= image_tag "secondhands-intro02.png", class:"list-pict" %>
-      <h3 class='feature-list-tex'>
-        すぐに買い手が見つかる
-      </h3>
-      <p class='feature-list-description'>
-        大学内で探すから売買が効率的！
-      </p>
-    </li>
-    <li class='list'>
-      <%= image_tag "secondhands-intro03.png", class:"list-pict" %>
-      <h3 class='feature-list-tex'>
-        他の教科書を購入
-      </h3>
-      <p class='feature-list-description'>
-        他の授業の教科書を購入して出費を削減！
-      </p>
-    </li>
-  </ul>
+    <%# SECONDHANDSの特徴 %>
+    <div class='feature-contents'>
+    <h2 class='title'>
+     SECONDHANDSの特徴
+    </h2>
+    <ul class='feature-lists'>
+      <li class='list'>
+        <%= image_tag "secondhands-intro01.png", class:"list-pict" %>
+        <h3 class='feature-list-tex'>
+          簡単に出品・購入
+        </h3>
+        <p class='feature-list-description'>
+          使い終わった教科書はすぐに出品！
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "secondhands-intro02.png", class:"list-pict" %>
+        <h3 class='feature-list-tex'>
+          すぐに買い手が見つかる
+        </h3>
+        <p class='feature-list-description'>
+          大学内で探すから売買が効率的！
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "secondhands-intro03.png", class:"list-pict" %>
+        <h3 class='feature-list-tex'>
+          他の教科書を購入
+        </h3>
+        <p class='feature-list-description'>
+          他の授業の教科書を購入して出費を削減！
+        </p>
+      </li>
+    </ul>
+    <%# /SECONDHANDSの特徴 %>
+  <% end %>
 </div>
+<%# 出品ボタン %>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   出品する
 <% end %>
+<%# /出品ボタン %>
 <%= render "shared/footer" %>

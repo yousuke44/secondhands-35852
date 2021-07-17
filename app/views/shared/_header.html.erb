@@ -4,6 +4,7 @@
       <% if user_signed_in? %>
         <li><%= link_to image_tag("secondhands-logo.png", class: "secondhands-icon"), "/" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn-square" %></li>
+        <li><%= link_to 'マイページ', "#", class: "btn-square" %></li>
       <% else %>
         <li><%= link_to image_tag("secondhands-logo.png", class: "secondhands-icon"), "/" %></li>
         <li><%= link_to ' ログイン ', new_user_session_path, class: "btn-square" %></li>
