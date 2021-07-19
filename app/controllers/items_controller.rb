@@ -21,20 +21,21 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
       render :edit
     end
+  end
+
+  def destroy
+    redirect_to root_path if @item.destroy
   end
 
   private
