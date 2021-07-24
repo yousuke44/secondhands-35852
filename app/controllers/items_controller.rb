@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :move_to_index, except: [:index, :new, :create]
+  before_action :set_q, only: [:index, :search]
+  before_action :move_to_index, except: [:index, :search, :new, :create]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
@@ -38,9 +39,18 @@ class ItemsController < ApplicationController
     redirect_to root_path if @item.destroy
   end
 
+  def search
+    @results = @q.result.order('created_at DESC')
+  end
+
   private
+
   def item_params
     params.require(:item).permit(:name, :price, :year_period_id, :lecture, :teacher, :sales_status_id, :scheduled_delivery_id, :author, :publisher, :image).merge(user_id: current_user.id)
+  end
+
+  def set_q
+    @q = Item.ransack(params[:q])
   end
 
   def move_to_index
