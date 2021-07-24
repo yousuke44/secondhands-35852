@@ -10,8 +10,36 @@ a {
 .item-search {
   width: 100vw;
   padding: 2vh 10vw;
-  display: flex;
   background-color: rgb(226, 217, 217);
+}
+
+.item-search-title {
+  padding: 0 0 10px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search-input-form {
+  padding: 10px 0 10px 10px;
+}
+
+.search-input-name {
+  font-size: 18px;
+}
+
+.search-input-lecture {
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+.search-input-teacher {
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+.search-input-space {
+  width: 200px;
+  height: 24px;
 }
 /* //ログイン後の検索 */
 
