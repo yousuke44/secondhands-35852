@@ -19,3 +19,17 @@ ja:
         sales_status_id: 商品の状態
         scheduled_delivery_id: 発送までの日数
         user: 会員名
+
+  activemodel:
+    attributes:
+      order_address:
+        city: 市区町村
+        address: 番地
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        last_name: 名字
+        first_name: 名前
+        last_name_kana: 名字(カナ)
+        first_name_kana: 名前(カナ)
+        phone_number: 電話番号
+        token: クレジットカード情報
