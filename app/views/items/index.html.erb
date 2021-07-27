@@ -8,10 +8,10 @@
       <%= search_form_for @q, url: search_items_path, class:"search-input-form" do |f| %>
         <%= f.label :name_cont, '商品名', class:"search-input-name" %>
         <%= f.search_field :name_cont, class:"search-input-space" %>
-        <%= f.label :lecture_eq, '講義名', class:"search-input-lecture" %>
-        <%= f.search_field :lecture_eq, class:"search-input-space", placeholder:"全角で正しく入力" %>
-        <%= f.label :teacher_eq, '先生名', class:"search-input-teacher" %>
-        <%= f.search_field :teacher_eq, class:"search-input-space", placeholder:"全角で正しく入力" %>
+        <%= f.label :lecture_cont, '講義名', class:"search-input-lecture" %>
+        <%= f.search_field :lecture_cont, class:"search-input-space", placeholder:"全角で入力してください" %>
+        <%= f.label :teacher_cont, '先生名', class:"search-input-teacher" %>
+        <%= f.search_field :teacher_cont, class:"search-input-space", placeholder:"全角で入力してください" %>
         <%= f.submit '検索', class:"search-btn"%>
       <% end %>
     </div>
@@ -26,6 +26,11 @@
               <%=link_to item_path(item.id) do %>
                 <div class='item-img-content'>
                   <%= image_tag item.image, class: "item-img" %>
+                  <% if item.order.present? %>
+                    <div class='sold-out'>
+                      <span>Sold Out!!</span>
+                    </div>
+                  <%end%>
                 </div>
                 <div class='item-info'>
                   <h3 class='item-name'>

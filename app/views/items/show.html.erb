@@ -5,6 +5,11 @@
   <div class="item-box">
     <div class="item-main-info">
       <%= image_tag @item.image, class:"item-box-img" %>
+      <% if @item.order.present? %>
+        <div class='sold-out-show'>
+          <span>Sold Out!!</span>
+        </div>
+      <%end%>
       <div class="item-name-price">
         <span class="show-indispensable">商品名</span>
         <div class="item-name">
@@ -14,8 +19,10 @@
         <div class="item-price">
           <%= @item.price.to_s(:delimited) %>円
         </div>
-        <% if current_user.id != @item.user_id %>
-        <%= link_to "購入画面に進む", "#", class:"item-orange-btn"%>
+        <% if user_signed_in? && @item.order == nil %>
+          <% if current_user.id != @item.user_id %>
+            <%= link_to "購入画面に進む", item_orders_path(@item.id), method: :get, class:"item-orange-btn"%>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -59,11 +66,13 @@
         </tr>
       </tbody>
     </table>
-    <% if current_user.id == @item.user_id %>
-      <%= link_to "商品の編集", edit_item_path(@item.id),method: :get, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
-    <% end %>
+    <% if user_signed_in? && @item.order == nil %>
+      <% if current_user.id == @item.user_id %>
+        <%= link_to "商品の編集", edit_item_path(@item.id),method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+      <% end %>
+    <%end%>
   </div>
 </div>
 <%# /商品の詳細 %>

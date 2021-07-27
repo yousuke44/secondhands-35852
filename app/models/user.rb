@@ -8,6 +8,7 @@ class User < ApplicationRecord
   belongs_to :university
   belongs_to :department
   has_many :items
+  has_many :orders
 
   with_options presence: true do
     validates :nickname

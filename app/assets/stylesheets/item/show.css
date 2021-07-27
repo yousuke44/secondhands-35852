@@ -28,7 +28,21 @@
   height: 40vh;
   min-height: 200px;
   object-fit: contain;
-  margin-right: 40px;
+}
+
+.sold-out-show {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  background-color: crimson;
+  transform: skewY(-10deg);
+}
+
+.sold-out-show>span {
+  color: #FFF;
+  font-size: 45px;
+  font: bold;
 }
 
 .show-indispensable {
@@ -43,6 +57,7 @@
 
 .item-name-price {
   flex-direction: column;
+  margin-left: 40px;
 }
 
 .item-name {
