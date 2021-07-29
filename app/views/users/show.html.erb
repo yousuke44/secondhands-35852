@@ -1,0 +1,86 @@
+<header class='top-page-header'>
+  <div class="left-contents">
+    <ul class="left-list">
+      <li><%= link_to image_tag("secondhands-logo.png", class: "secondhands-icon"), "/" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn-square" %></li>
+      <li><%= link_to '商品一覧へ', root_path, class: "btn-square" %></li>
+   </ul>
+  </div>
+  <div class="right-contents">
+    <div class="right-list">
+      <%= link_to current_user.nickname + " さんのマイページ", "#", class: "user-nickname" %>
+    </div>
+  </div>
+</header>
+
+<div class='mypage-main'>
+  <% if @items[0] != nil %>
+    <div class='on-sale-item-title'>販売中商品</div>
+    <% @items.each do |item| %>
+      <% if item.order.blank?%>
+        <div class="on-sale-item-lists">
+          <div class="on-sale-item-left">
+            <%=link_to item_path(item.id),class: 'on-sale-item-img-content' do %>
+              <%= image_tag item.image, class: "on-sale-item-img" %>
+            <%end%>
+            <div class='on-sale-item-info'>
+              <div class='on-sale-item-name-price'>
+                <br><%= item.name %>
+                <br><%= item.price.to_s(:delimited) %>円
+              </div>
+              <div class='on-sale-item-info-sub'>
+                <br><%= item.year_period.name %>
+                <br><%= item.lecture %>
+                <br><%= item.teacher %>
+              </div>
+            </div>
+          </div>
+          <div class="on-sale-item-right">
+            <%= link_to '編集', edit_item_path(item.id), method: :get, class: "on-sale-item-edit-btn" %>
+            <%= link_to "削除", item_path(item.id), method: :delete, class:"on-sale-item-destroy-btn" %>
+            <%= link_to "詳細", item_path(item.id), class:"on-sale-item-show-btn" %>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+    
+    <div class='on-sale-item-title'>売却済み商品</div>
+    <% @items.each do |item| %>
+      <% if item.order.present?%>
+        <div class="on-sale-item-lists">
+          <div class="on-sale-item-left">
+            <%=link_to item_path(item.id),class: 'on-sale-item-img-content' do %>
+              <%= image_tag item.image, class: "on-sale-item-img" %>
+            <%end%>
+            <div class='on-sale-item-info'>
+              <div class='on-sale-item-name-price'>
+                <br><%= item.name %>
+                <br><%= item.price.to_s(:delimited) %>円
+              </div>
+              <div class='on-sale-item-info-sub'>
+                <br><%= item.year_period.name %>
+                <br><%= item.lecture %>
+                <br><%= item.teacher %>
+              </div>
+            </div>
+          </div>
+          <div class="on-sale-item-right">
+            <%= link_to "詳細", item_path(item.id), class:"on-sale-item-show-btn" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class='no-message'>
+      現在出品中の商品はありません
+    </div>
+  <% end %>
+</div>
+
+<%# 出品ボタン %>
+<%= link_to(new_item_path, class: 'purchase-btn') do %>
+  出品する
+<% end %>
+<%# /出品ボタン %>
+
+<%= render "shared/footer" %>
