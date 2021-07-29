@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_action :set_q, only: [:index, :search]
   before_action :move_to_index, except: [:index, :search, :new, :create]
+  before_action :move_to_top, only: [:edit, :update, :destroy]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
@@ -55,6 +56,10 @@ class ItemsController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:id])
+  end
+
+  def move_to_top
+    redirect_to root_path unless @item.order.blank?
   end
 
   def contributor_confirmation
